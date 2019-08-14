@@ -1,5 +1,7 @@
 # docker-pdftk-java
 
+[![](https://images.microbadger.com/badges/image/clevyr/pdftk-java.svg)](https://microbadger.com/images/clevyr/pdftk-java "Get your own image badge on microbadger.com")
+
 Docker alpine image with [pdftk-java](https://gitlab.com/pdftk-java/pdftk) build and `openjdk8-jre` installed.
 
 ## Usage
