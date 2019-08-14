@@ -22,10 +22,11 @@ RUN set -x \
     && gradle --no-daemon --parallel --quiet --no-build-cache \
         -p pdftk shadowJar \
     && mv pdftk/build/libs/pdftk.jar ./ \
+    && apk del .build-deps \
     && rm -rf \
         /root/.gradle \
         pdftk \
-    && apk del .build-deps
+        /var/cache/apk/*
 
 COPY rootfs/ /
 
