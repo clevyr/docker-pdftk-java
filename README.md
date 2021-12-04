@@ -4,6 +4,20 @@
 
 Docker alpine image with [pdftk-java](https://gitlab.com/pdftk-java/pdftk) build and `openjdk8-jre` installed.
 
+## Building
+
+With default versions:
+
+```sh
+docker build -t my-pdftk-java . < Dockerfile
+```
+
+With custom versions of JDK, PDFTK and Alpine image:
+
+```sh
+docker build --build-arg FROM=ruby:2.4-alpine --build-arg OPENJDK_RELEASE=8 --build-arg PDFTK_RELEASE=v3.0.6 -t my-pdftk-java . < Dockerfile
+```
+
 ## Usage
 
 A shell script called `pdftk` has been created to defer calls off to the built binary `/app/pdftk.jar`
