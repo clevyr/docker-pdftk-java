@@ -2,10 +2,10 @@ FROM alpine
 
 WORKDIR /app
 
-ENV PATH "$PATH:/app"
+ENV PATH="$PATH:/app"
 
-ARG OPENJDK_RELEASE=8
-ARG PDFTK_RELEASE=v3.0.6
+ARG OPENJDK_RELEASE=25
+ARG PDFTK_RELEASE=v3.3.3
 
 RUN set -x \
     && apk add \
@@ -21,7 +21,7 @@ RUN set -x \
          https://gitlab.com/pdftk-java/pdftk \
     && gradle --no-daemon --parallel --quiet --no-build-cache \
         -p pdftk shadowJar \
-    && mv pdftk/build/libs/pdftk.jar ./ \
+    && mv pdftk/build/libs/pdftk-all.jar ./pdftk.jar \
     && apk del .build-deps \
     && rm -rf \
         /root/.gradle \
