@@ -3,12 +3,12 @@ name: Build and Push
 on:
   push:
     branches: [master]
-    tags: ["v*"]
   pull_request:
     branches: [master]
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
+  PDFTK_VERSION: "3.3.3"
 
 jobs:
   build:
@@ -35,10 +35,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
+            type=raw,value=${{ env.PDFTK_VERSION }}
 
       - uses: docker/build-push-action@v6
         with:
